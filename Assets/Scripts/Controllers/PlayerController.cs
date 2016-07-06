@@ -4,7 +4,13 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;  //We can controll the speed of the player here.
-    public Rigidbody rb;
+    public Rigidbody2D rb;
+    LevelManager levelManager;
+    
+    void Awake()
+    {
+        levelManager = GameObject.FindGameObjectWithTag("T_LevelManager").GetComponent<LevelManager>();
+    }
 
     public void PlayerMove(float xAxis)
     {
@@ -16,5 +22,10 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(transform.right * playerSpeed);
             }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        levelManager.LoadNextLevel();
     }
 }
