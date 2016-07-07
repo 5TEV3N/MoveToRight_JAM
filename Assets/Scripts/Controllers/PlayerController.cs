@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     {
         levelManager = GameObject.FindGameObjectWithTag("T_LevelManager").GetComponent<LevelManager>();
     }
-
     public void PlayerMove(float xAxis)
     {
         //if you're not moving Left or Right
