@@ -18,9 +18,7 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(levelID); //Loads scene according to name (Can be int ID if needed)
     }
-    */
 
-    /*
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -44,6 +42,10 @@ public class LevelManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (currentScene == 3)
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
     public void ReloadLevel()
