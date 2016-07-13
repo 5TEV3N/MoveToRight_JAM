@@ -27,11 +27,5 @@ public class InputManager : MonoBehaviour
         {
             anim.SetBool("isWalking", false);
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            print("Restart");
-            levelManager.ReloadLevel();
-        }
     }
 }
