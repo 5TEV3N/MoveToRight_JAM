@@ -1,23 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class AudioManager : MonoBehaviour
 {
-    static bool AudioBegin = false;
+    private int pitchVal = 1;
+
+    public bool AudioBegin = false;
     public AudioSource bgm;
+    public int counter = 0;
+
     LevelManager levelManger;
+
 
     void Awake()
     {
         levelManger = GameObject.FindGameObjectWithTag("T_LevelManager").GetComponent<LevelManager>();
-
-        if (!AudioBegin)
-        {
-            bgm.Play();
-            DontDestroyOnLoad(gameObject);
-            AudioBegin = true;
-        }
+        StartLoop();
     }
+    public void StartLoop()
+    {
+        bgm.clip = Instantiate(Resources.Load ("275673__foolboymedia__c64-melody")) as AudioClip;
+        bgm.loop = true;
+        bgm.Play();
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void TemporaryPause()
     {
         bgm.Pause();
@@ -26,8 +35,9 @@ public class AudioManager : MonoBehaviour
             bgm.UnPause();
         }
     }
+
     public void CripplingDepression()
     {
-        bgm.pitch -= 1;
+        bgm.pitch = --pitchVal;
     }
 }

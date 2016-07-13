@@ -12,12 +12,11 @@ public class LevelManager : MonoBehaviour
 
     float timer = 2f;
 
-    
+
 
     void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("T_AudioManager").GetComponent<AudioManager>();
-
         if (fadeToBlackIcon == true)
         {
             timerOn = true;
@@ -39,7 +38,6 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-    
     public void LoadNextLevel()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -53,11 +51,13 @@ public class LevelManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-            if (currentScene == 3) // If the scene is "1.2 Room", then load the first scene ("_1Room")
-
-                SceneManager.LoadScene(0);
+            if (currentScene == 7) // If the scene is "1.2 Room", then load the first scene ("_1Room")
+            {
+                SceneManager.LoadScene(4);
             }
         }
+    }
+
 }
 //private UIManager UIManager;
 
